@@ -1,5 +1,8 @@
 package Homework_Java_016;
 
+/**
+ * Created by aulutas on 16.03.2017.
+ */
 public class Card {
     private CardValue m_value;
     private CardType m_type;
@@ -8,18 +11,18 @@ public class Card {
         m_type=t;
     }
     public Card(String name){
-        setName(name);
+        m_value.setValue(null);
+        m_type.setType(null);
     }
     public String getName(){
-        return m_type.getName()+"-"+m_value.getName();
+        return m_type.getType()+"-"+m_value.getName();
     }
 
     public void setName(String name){
-        m_value=CardValue.valueOf(name.substring(0,name.indexOf("-")));
-        m_type=CardType.valueOf(name.substring(name.indexOf("-")+1));
+        m_value=CardValue.valueOf(name);
     }
     public String toString(){
-        return String.format("%s-%s",m_type.getName(),m_value.getName());
+        return String.format("%s-%s",m_type.getType(),m_value.getName());
     }
     public static Card[] getShuffledDeck(){
         Card[] deck = new Card[52];
@@ -32,8 +35,11 @@ enum CardType {
     CardType(String name){
         m_value=name;
     }
-    public String getName(){
+    public String getType(){
         return m_value;
+    }
+    public void setType(String type){
+
     }
 }
 enum CardValue{
@@ -44,5 +50,8 @@ enum CardValue{
     }
     public String getName(){
         return m_value;
+    }
+    public void setValue(String value){
+
     }
 }
