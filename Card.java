@@ -1,5 +1,7 @@
 package Homework_Java_016;
 
+package CardGames;
+
 /**
  * Created by aulutas on 16.03.2017.
  */
@@ -31,15 +33,15 @@ public class Card {
 }
 enum CardType {
     SPADE("Maça"), CLUB("Sinek"), DIAMOND("Karo"), HEART("Kupa");
-    private String m_value=null;
+    private String m_type=null;
     CardType(String name){
-        m_value=name;
+        m_type=name;
     }
     public String getType(){
-        return m_value;
+        return m_type;
     }
     public void setType(String type){
-
+        m_type=type;
     }
 }
 enum CardValue{
@@ -52,6 +54,6 @@ enum CardValue{
         return m_value;
     }
     public void setValue(String value){
-
+        m_value=value;
     }
 }
