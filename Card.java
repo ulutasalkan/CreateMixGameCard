@@ -2,9 +2,6 @@ package Homework_Java_016;
 
 package CardGames;
 
-/**
- * Created by aulutas on 16.03.2017.
- */
 public class Card {
     private CardValue m_value;
     private CardType m_type;
@@ -89,6 +86,10 @@ public class Card {
         	for(int j=0;j<CardValue.values().length;j++)      		
         		deck[k+j]=new Card(CardType.values()[i],CardValue.values()[j]);
         return deck;
+    }
+    public static Card[] mixCards(Card[] deck,int turn){
+    	
+    	return deck;
     }
 }
 enum CardType {
