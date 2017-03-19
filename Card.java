@@ -1,8 +1,16 @@
-package Homework_Java_016;
+import java.util.Random;
 
-package CardGames;
+public class AppCard {
 
-public class Card {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Card[] c = Card.getShuffledDeck();
+		for(Card c1: c)
+			System.out.println(c1);
+	}
+
+}
+class Card {
     private CardValue m_value;
     private CardType m_type;
     public Card(CardType t,CardValue v){
@@ -76,20 +84,34 @@ public class Card {
     			throw new IllegalArgumentException("Geçersiz değer "+sValue);
     	}
     }    
-    public String toString(){
-        return getName();
-    }
     public static Card[] getShuffledDeck(){
         Card[] deck = new Card[52];
         int k=0;
         for(int i=0;i<CardType.values().length;i++,k+=13)       	
         	for(int j=0;j<CardValue.values().length;j++)      		
         		deck[k+j]=new Card(CardType.values()[i],CardValue.values()[j]);
+        int turn=100;
+        mixCards(deck, turn);
         return deck;
     }
-    public static Card[] mixCards(Card[] deck,int turn){
+    private static Card[] mixCards(Card[] deck,int turn){
+    	Random r=new Random();     
     	
+    	Card cTemp=null;
+    	for(int i=0;i<turn;i++){
+    		int c1=r.nextInt(52);
+    		int c2=r.nextInt(52);
+    		//if c1 is equal then create another c2
+    		while(c1==c2)
+    			c2=r.nextInt(52);
+    		cTemp=deck[c1];
+    		deck[c1]=deck[c2];
+    		deck[c2]=cTemp;
+    	}
     	return deck;
+    }
+    public String toString(){
+        return getName();
     }
 }
 enum CardType {
